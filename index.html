@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SantriManager</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif; /* A nice modern font, assuming Tailwind's default or a custom config would set this */
+    }
+    /* For custom scrollbars if desired, optional */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #4a5568; /* gray-700 */
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #2d3748; /* gray-800 */
+    }
+    .tab-button {
+      transition: all 0.3s ease-in-out;
+    }
+    .tab-button.active {
+      border-color: #4F46E5; /* indigo-600 */
+      color: #4F46E5;
+      background-color: #EEF2FF; /* indigo-50 */
+    }
+    .tab-button:not(.active):hover {
+      background-color: #F3F4F6; /* gray-100 */
+    }
+    /* Animation for card appearance */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in {
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+
+    /* Print-specific styles */
+    @media print {
+      body {
+        background-color: white !important; /* Ensure background is white for print */
+        color: black !important; /* Ensure text is black */
+        font-size: 10pt; /* Adjust base font size for print */
+      }
+      /* Hide elements not relevant for the printed report */
+      header.app-header, 
+      nav.app-nav, 
+      footer.app-footer,
+      button.no-print { /* Add .no-print class to buttons you want to hide in print */
+        display: none !important;
+      }
+      /* Ensure main content takes full width */
+      main.app-main-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+      }
+      .card-print { /* Style cards for printing */
+        border: 1px solid #ccc;
+        box-shadow: none !important;
+        page-break-inside: avoid; /* Try to keep cards from splitting across pages */
+      }
+      .card-print-title {
+        color: black !important;
+      }
+      .card-print-body {
+         color: black !important;
+      }
+      .text-indigo-400 { color: #818cf8 !important; /* Keep some colors if they are meaningful */}
+      /* Adjust text colors for better print readability */
+      .text-slate-100, .text-slate-200, .text-slate-300, .text-slate-400, .text-slate-500 {
+        color: black !important;
+      }
+      .bg-slate-700, .bg-slate-800, .bg-slate-900 {
+        background-color: white !important;
+      }
+      .bg-indigo-600 {
+        background-color: #4f46e5 !important; /* Keep button color or make it grayscale */
+        color: white !important;
+      }
+       /* Ensure links are distinguishable */
+      a {
+        color: #0000EE !important; /* Standard blue for links */
+        text-decoration: underline !important;
+      }
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^18.2.0/",
+    "react": "https://esm.sh/react@^18.2.0",
+    "react-dom/client": "https://esm.sh/react-dom@^18.2.0/client",
+    "react-dom/": "https://esm.sh/react-dom@^18.2.0/",
+    "chart.js": "https://esm.sh/chart.js@^4.4.2",
+    "react-chartjs-2": "https://esm.sh/react-chartjs-2@^5.2.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-slate-900 text-slate-100">
+  <div id="root"></div>
+  <script type="module" src="./index.tsx"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "SantriManager",
+  "description": "An application to manage credit codes, server codes, and sales transactions locally. It helps track inventory and generate sales messages.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}
